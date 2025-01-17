@@ -56,15 +56,16 @@ public class CreateCartWithOrders : ISlice
                 return Results.Created($"/carts/{cart.Id}", createdCart);
             }).WithName("CreateCartWithOrders");
     }
-}
 
-public class CartWithOrdersForCreationDto
-{
-    public List<OrderForCreationDto> Orders { get; set; } = [];
-}
 
-public class OrderForCreationDto
-{
-    public int ProductId { get; set; }
-    public int Quantity { get; set; }
+    public class CartWithOrdersForCreationDto
+    {
+        public List<OrderForCreationDto> Orders { get; set; } = [];
+    }
+
+    public class OrderForCreationDto
+    {
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+    }
 }

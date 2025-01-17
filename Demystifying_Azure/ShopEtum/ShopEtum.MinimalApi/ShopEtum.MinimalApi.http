@@ -43,6 +43,6 @@ Accept: application/json
 }
 
 ### GetCart
-GET {{ShopEtum.MinimalApi_HostAddress}}/carts/1
+GET {{ShopEtum.MinimalApi_HostAddress}}/carts/8
 Accept: application/json
  

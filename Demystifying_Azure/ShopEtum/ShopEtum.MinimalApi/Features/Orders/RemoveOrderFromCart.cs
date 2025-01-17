@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopEtum.MinimalApi.Shared.Slices;
-using ShopEtum.MinimalApi.Shared.Domain.Entities;
 using ShopEtum.MinimalApi.Shared.Persistence;
-using static ShopEtum.MinimalApi.Features.Products.CreateProduct;
+using ShopEtum.MinimalApi.Shared.Slices;
 
 namespace ShopEtum.MinimalApi.Features.Orders;
 

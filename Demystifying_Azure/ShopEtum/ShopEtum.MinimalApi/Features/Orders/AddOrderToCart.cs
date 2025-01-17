@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopEtum.MinimalApi.Shared.Slices;
 using ShopEtum.MinimalApi.Shared.Domain.Entities;
 using ShopEtum.MinimalApi.Shared.Persistence;
+using ShopEtum.MinimalApi.Shared.Slices;
 
 namespace ShopEtum.MinimalApi.Features.Orders;
 
@@ -50,10 +50,10 @@ public class AddOrderToCart : ISlice
                 return Results.Created($"/carts/{cartId}/orders/{order.Id}", createdOrder);
             }).WithName("AddOrderToCart");
     }
-}
 
-public class OrderForCreationDto
-{
-    public int ProductId { get; set; }
-    public int Quantity { get; set; }
+    public class OrderForCreationDto
+    {
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+    }
 }
