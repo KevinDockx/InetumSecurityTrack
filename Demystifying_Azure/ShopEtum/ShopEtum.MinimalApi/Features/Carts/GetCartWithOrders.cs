@@ -44,6 +44,7 @@ public class GetCartWithOrders : ISlice
                 };
 
                 return Results.Ok(cartWithOrdersAndProducts);
-            }).WithName("GetCartWithOrders");
+            }).WithName("GetCartWithOrders")
+            .RequireAuthorization();
     }
 }

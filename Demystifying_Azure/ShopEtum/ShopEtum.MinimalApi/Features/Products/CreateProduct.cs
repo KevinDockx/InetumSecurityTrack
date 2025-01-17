@@ -31,7 +31,8 @@ public class CreateProduct : ISlice
                     product.Description,
                     product.Price
                 });
-        }).WithName("CreateProduct");
+        }).WithName("CreateProduct")
+        .RequireAuthorization();
     }
 
     public class ProductForCreationDto

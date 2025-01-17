@@ -32,7 +32,8 @@ public class RemoveOrderFromCart : ISlice
             await db.SaveChangesAsync(cancellationToken);
 
             return Results.NoContent();
-        }).WithName("RemoveOrderFromCart");
+        }).WithName("RemoveOrderFromCart")
+        .RequireAuthorization();
     }
 
 }

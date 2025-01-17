@@ -11,8 +11,10 @@ public class GetProduct : ISlice
         endpointRouteBuilder.MapGet("/products/{id}", 
             async (int id, 
                 ShopEtumDbContext db, 
+                HttpContext ctx,
                 CancellationToken cancellationToken) =>
-        { 
+        {
+            var user = ctx.User;
             return await db.Products.FindAsync([id], cancellationToken)
                 is Product product
                     ? Results.Ok(new
@@ -23,6 +25,6 @@ public class GetProduct : ISlice
                         product.Price
                     })
                     : Results.NotFound();
-        }).WithName("GetProductById"); 
+        }).WithName("GetProductById");
     }
 }

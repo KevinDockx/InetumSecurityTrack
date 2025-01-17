@@ -54,7 +54,8 @@ public class CreateCartWithOrders : ISlice
                 };
 
                 return Results.Created($"/carts/{cart.Id}", createdCart);
-            }).WithName("CreateCartWithOrders");
+            }).WithName("CreateCartWithOrders")
+            .RequireAuthorization(); 
     }
 
 

@@ -28,6 +28,7 @@ public class CreateCart : ISlice
                 };
 
                 return Results.Created($"/carts/{cart.Id}", createdCart);
-            }).WithName("CreateCart");
+            }).WithName("CreateCart")
+            .RequireAuthorization();
     }
 }  

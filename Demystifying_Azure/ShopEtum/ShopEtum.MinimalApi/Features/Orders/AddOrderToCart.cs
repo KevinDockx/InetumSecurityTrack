@@ -48,7 +48,8 @@ public class AddOrderToCart : ISlice
                 };
 
                 return Results.Created($"/carts/{cartId}/orders/{order.Id}", createdOrder);
-            }).WithName("AddOrderToCart");
+            }).WithName("AddOrderToCart")
+            .RequireAuthorization();
     }
 
     public class OrderForCreationDto

@@ -22,7 +22,8 @@ public class ListProducts : ISlice
                 .ToListAsync(cancellationToken);
 
             return Results.Ok(products);
-        }).WithName("GetProducts");
+        }).WithName("GetProducts")
+        .RequireAuthorization();
     }
 
 }

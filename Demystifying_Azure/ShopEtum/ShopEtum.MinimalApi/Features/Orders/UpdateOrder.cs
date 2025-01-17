@@ -38,7 +38,8 @@ public class UpdateOrder : ISlice
                 };
 
                 return Results.Ok(updatedOrder);
-            }).WithName("UpdateOrder");
+            }).WithName("UpdateOrder")
+            .RequireAuthorization();
     }
 
     public class OrderForUpdateDto

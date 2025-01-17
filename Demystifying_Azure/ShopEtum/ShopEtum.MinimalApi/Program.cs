@@ -15,6 +15,7 @@ builder.Services.AddDbContext<ShopEtumDbContext>(options =>
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer();
 builder.Services.AddAuthorization();
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.RegisterSlices(); 
@@ -38,8 +39,8 @@ else
 }
 app.UseStatusCodePages();
 
-//app.UseAuthentication();
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapSliceEndpoints();
 
