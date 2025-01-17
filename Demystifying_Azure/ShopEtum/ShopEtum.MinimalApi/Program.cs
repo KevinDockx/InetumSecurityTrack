@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using ShopEtum.MinimalApi.Shared.Slices;
 using ShopEtum.MinimalApi.Shared.Persistence;
 using ShopEtum.MinimalApi.Shared.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,18 @@ builder.Services.AddDbContext<ShopEtumDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ShopEtumDbConnection")));
 
 builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer();
+    .AddJwtBearer(options =>
+    {
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                context.Response.StatusCode = 401;
+                context.Response.ContentType = "text/plain";
+                return context.Response.WriteAsync(context.Exception.ToString());
+            }
+        };
+    });
 builder.Services.AddAuthorization();
 
 builder.Services.AddHttpContextAccessor();
@@ -29,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -39,8 +54,7 @@ else
 }
 app.UseStatusCodePages();
 
-app.UseAuthentication();
-app.UseAuthorization();
+
 
 app.MapSliceEndpoints();
 
