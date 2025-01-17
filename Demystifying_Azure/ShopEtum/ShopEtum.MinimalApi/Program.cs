@@ -14,7 +14,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ShopEtumDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ShopEtumDbConnection")));
 
-builder.Services.AddAuthentication("Bearer")
+builder.Services.AddProblemDetails();
+
+builder.Services.AddAuthentication()
     .AddJwtBearer(options =>
     {
         options.Events = new JwtBearerEvents
@@ -53,8 +55,6 @@ else
     app.UseExceptionHandler();
 }
 app.UseStatusCodePages();
-
-
 
 app.MapSliceEndpoints();
 

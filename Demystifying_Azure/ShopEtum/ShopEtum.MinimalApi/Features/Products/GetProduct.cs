@@ -25,6 +25,6 @@ public class GetProduct : ISlice
                         product.Price
                     })
                     : Results.NotFound();
-        }).WithName("GetProductById");
+        }).RequireAuthorization().WithName("GetProductById");
     }
 }

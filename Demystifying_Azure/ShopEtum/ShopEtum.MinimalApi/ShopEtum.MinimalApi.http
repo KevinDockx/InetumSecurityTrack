@@ -1,5 +1,5 @@
-@ShopEtum.MinimalApi_HostAddress = http://localhost:5209
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImtldmluIiwic3ViIjoia2V2aW4iLCJqdGkiOiJiOTQ1ZWJiNyIsImF1ZCI6InNob3BldHVtYXBpIiwibmJmIjoxNzM3MTEwNDg1LCJleHAiOjE3NDQ4ODY0ODUsImlhdCI6MTczNzExMDQ4NiwiaXNzIjoiZG90bmV0LXVzZXItand0cyJ9.pIXlwgJdwW4yeUCd92AWFBT9R5YXR3x8j3W1gDzIi60
+@ShopEtum.MinimalApi_HostAddress = https://localhost:7221
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImtldmluIiwic3ViIjoia2V2aW4iLCJqdGkiOiJkNmRkZTFlMyIsImF1ZCI6InNob3BldHVtYXBpIiwibmJmIjoxNzM3MTE1ODk5LCJleHAiOjE3NDQ4OTE4OTksImlhdCI6MTczNzExNTkwMCwiaXNzIjoiZG90bmV0LXVzZXItand0cyJ9.dE18BBDuKwotNYSPDRT6yLjckMcoXqaNynnH2Zr6V5g
 
 ### CreateProduct
 POST {{ShopEtum.MinimalApi_HostAddress}}/products
@@ -16,7 +16,7 @@ Authentication: Bearer {{Token}}
 ### GetProduct
 GET {{ShopEtum.MinimalApi_HostAddress}}/products/1
 Accept: application/json
-Authentication: Bearer {{Token}}
+Authentication: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImtldmluIiwic3ViIjoia2V2aW4iLCJqdGkiOiJkNmRkZTFlMyIsImF1ZCI6InNob3BldHVtYXBpIiwibmJmIjoxNzM3MTE1ODk5LCJleHAiOjE3NDQ4OTE4OTksImlhdCI6MTczNzExNTkwMCwiaXNzIjoiZG90bmV0LXVzZXItand0cyJ9.dE18BBDuKwotNYSPDRT6yLjckMcoXqaNynnH2Zr6V5g
 
 ### ListProducts
 GET {{ShopEtum.MinimalApi_HostAddress}}/products
