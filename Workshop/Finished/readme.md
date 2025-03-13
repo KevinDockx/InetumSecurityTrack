@@ -25,7 +25,7 @@ We've set up Entra ID as such:
 		api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.write
 	Scope for downstream API access: TODO (inetumworkshop-downstreamapi)
 	
-	DO NOT change the portnumber of the starter applications.  Entra ID is configured to only return tokens to the current localhost:theport URI(s), at endpoint /signin-oidc (the default).
+DO NOT change the portnumber of the starter applications.  Entra ID is configured to only return tokens to the current localhost:theport URI(s), at endpoint /signin-oidc (the default).
 			
 We suggest using MS's OIDC middleware (Microsoft.AspNetCore.Authentication.OpenIdConnect) to integrate with the IDP, but if you're free to choose.  If you really want to make us unhappy, you can even use the Microsoft Authentication Library (MSAL).
 
