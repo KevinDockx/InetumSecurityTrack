@@ -1,0 +1,51 @@
+@ShopEtum.MinimalApi_HostAddress = https://localhost:7221
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImtldmluIiwic3ViIjoia2V2aW4iLCJqdGkiOiJiNzAxYzYxMSIsInNjb3BlIjoic2hvcGV0dW1hcGkuZnVsbGFjY2VzcyIsImF1ZCI6InNob3BldHVtYXBpIiwibmJmIjoxNzM3NTMwNTIxLCJleHAiOjE3NDUzMDY1MjEsImlhdCI6MTczNzUzMDUyMiwiaXNzIjoiZG90bmV0LXVzZXItand0cyJ9.TNb_NMWa1hSQNVPtLE9xky6qSIlT8HQpl4wUCzTQ1UI
+
+### CreateProduct
+POST {{ShopEtum.MinimalApi_HostAddress}}/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "name": "Sample Product",
+  "price": 19.99,
+  "description": "A sample product description"
+}
+
+### GetProduct
+GET {{ShopEtum.MinimalApi_HostAddress}}/products/1
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+### ListProducts
+GET {{ShopEtum.MinimalApi_HostAddress}}/products
+Accept: application/json
+
+### CreateCart
+POST {{ShopEtum.MinimalApi_HostAddress}}/carts
+Content-Type: application/json
+Accept: application/json
+ 
+### CreateCartWithOrders
+POST {{ShopEtum.MinimalApi_HostAddress}}/carts/with-orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "orders": [
+    {
+      "productId": 1,
+      "quantity": 2
+    },
+    {
+      "productId": 2,
+      "quantity": 1
+    }
+  ]
+}
+
+### GetCart
+GET {{ShopEtum.MinimalApi_HostAddress}}/carts/8
+Accept: application/json
+ 

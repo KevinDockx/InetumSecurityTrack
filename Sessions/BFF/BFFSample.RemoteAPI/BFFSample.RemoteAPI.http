@@ -1,0 +1,7 @@
+@BFFSample.RemoteAPI_HostAddress = https://localhost:7025
+
+GET {{BFFSample.RemoteAPI_HostAddress}}/remoteapi/hello/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImtldmluIiwic3ViIjoia2V2aW4iLCJqdGkiOiJjMjI5MWQ1ZSIsImF1ZCI6InJlbW90ZWFwaSIsIm5iZiI6MTc0MDczMTI4OCwiZXhwIjoxNzQ4NDIwODg4LCJpYXQiOjE3NDA3MzEyODksImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.mgUl8zw-kNA5uVCptKLkcv7-0tAoTgevxVCm-PCPQuI
+
+###

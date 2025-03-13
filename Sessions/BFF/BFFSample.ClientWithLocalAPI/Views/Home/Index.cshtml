@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hi there!</h1>
+    <p>I'm your friendly neighbourhood BFF sample.</p>
+
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <p>Welcome, @User.Identity.Name!</p>
+        
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <button id="callClassicLocalApiButton" class="btn btn-primary mb-2">Call classic local API</button>
+            <button id="callMinimalLocalApiButton" class="btn btn-primary mb-2">Call minimal local API</button>
+            <button id="callRemoteApiButton" class="btn btn-primary mb-2">Call remote API</button>
+        </div>
+    }
+    else
+    {
+        <p>It seems like I don't know who you are.  Log in to continue.</p>
+    } 
+
+    <div id="apiResult" class="mt-3">
+        <!-- API call results will be displayed here -->
+    </div> 
+</div>
