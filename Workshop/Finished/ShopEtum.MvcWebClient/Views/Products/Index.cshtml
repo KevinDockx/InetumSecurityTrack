@@ -1,0 +1,41 @@
+﻿@model List<ShopEtum.MvcWebClient.Models.Dto.ProductDto>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            @if (User.Identity?.IsAuthenticated ?? false)
+            {
+                <th>Quantity</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <td>
+                        <form asp-action="AddOrder" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                            <button type="submit" class="btn btn-primary">Add to cart</button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

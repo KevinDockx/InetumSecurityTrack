@@ -17,14 +17,11 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
 })
 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
- {
-     options.Cookie.HttpOnly = true;
-     // Cookies must be sent during cross-site requests when integrating with an IDP.
-     // Lax is the default, None can be required depending on the flow/IDP/functionality 
-     // you're using.
-     options.Cookie.SameSite = SameSiteMode.None;
-     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
- })
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+})
 .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
 {
     options.MapInboundClaims = false;
@@ -34,23 +31,12 @@ builder.Services.AddAuthentication(options =>
     options.ClientSecret = entraIdOpenIdConnectSettings["ClientSecret"];
     options.ResponseType = "code";
     options.SaveTokens = true;
-
-    // Entra automatically returns identity claims configured in your identity & access token configuration! No need to
-    // request the related scopes them explicitly. Adding/removing them here will have no effect. 
-    // options.Scope.Remove("email"); => no effect
-    // options.Scope.Add("ctry"); => no effect
-
-    // Entra does not automatically return a refresh token.  Request it explicitly.
     options.Scope.Add("offline_access");
-
-    // Entra does not automatically return resource scopes, except the user impersonation scope when
-    // another resource scope is requested that implies user impersonation (delegation: the app should
-    // be allowed to acces the API on behalf of the user).  Request it/them explicitly.
     options.Scope.Add(entraIdOpenIdConnectSettings["RemoteApiScope"] ?? "");
-
     options.TokenValidationParameters.NameClaimType = "name";
     options.TokenValidationParameters.RoleClaimType = "role";
 });
+
 
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
@@ -90,7 +76,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-app.MapGet("/minimallocalapi/hello", (HttpContext httpContext) =>
+app.MapGet("/localapi/currentuserclaims", (HttpContext httpContext) =>
 {
     return Results.Ok(new
     {

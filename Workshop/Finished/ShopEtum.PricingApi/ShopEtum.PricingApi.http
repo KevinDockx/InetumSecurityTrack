@@ -1,0 +1,6 @@
+@ShopEtum.PricingApi_HostAddress = http://localhost:5157
+
+GET {{ShopEtum.PricingApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
