@@ -11,21 +11,19 @@ The products are exposed via a remote API: ShopEtum.MinimalApi, endpoint /produc
 No security has been implemented anywhere.  
 
 - Integrate with an identity provider, using the code flow + PKCE.  You can use the login button to log in, or make the full controller only accessible when authorized.  Make sure you use the best practice for JavaScript-based applications: a BFF.  If you're not used to working with JavaScript and/or you think you're more likely to use another technology (regular MVC, Blazor, ...), feel free to use that as a client. We haven't provided it, but start -> new project is just a few clicks away.  We're here to help. 
-
-We've set up Entra ID as such:
-	User: inetumworkshop@kevindockxgmail.onmicrosoft.com
-	Password: ask Kevin :)
-	Well-known document: https://login.microsoftonline.com/5c154a7e-0c13-4f92-8531-e3f4d8fbeae9/v2.0/.well-known/openid-configuration
-	Authority: https://login.microsoftonline.com/5c154a7e-0c13-4f92-8531-e3f4d8fbeae9/v2.0
-	Client id: 50e0b5f1-add4-46fb-a878-78fac0c4ed2e (inetumworkshop-webclient)
-	Client secret: PtY8Q~j1vApzSU5yw1NfN9DMCTYyxGJTNZDJ~dms
-	Scope for API access: api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.fullaccess (inetumworkshop-api)
-	More granular scopes: 
-		api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.read
-		api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.write
-	Scope for downstream API access: TODO (inetumworkshop-downstreamapi)
+	
+	We've set up Entra ID as such:
+	- User: inetumworkshop@kevindockxgmail.onmicrosoft.com
+	- Password: ask Kevin :)
+	- Well-known document: https://login.microsoftonline.com/5c154a7e-0c13-4f92-8531-e3f4d8fbeae9/v2.0/.well-known/openid-configuration
+	- Authority: https://login.microsoftonline.com/5c154a7e-0c13-4f92-8531-e3f4d8fbeae9/v2.0
+	- Client id: 50e0b5f1-add4-46fb-a878-78fac0c4ed2e (inetumworkshop-webclient)
+	- Client secret: PtY8Q~j1vApzSU5yw1NfN9DMCTYyxGJTNZDJ~dms
+	- Scope for API access: api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.fullaccess (inetumworkshop-api)
+	- More granular scopes: api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.read api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.write
+	- Scope for downstream API access: TODO (inetumworkshop-downstreamapi)
 	
-DO NOT change the portnumber of the starter applications.  Entra ID is configured to only return tokens to the current localhost:theport URI(s), at endpoint /signin-oidc (the default).
+DO NOT change the port number of the starter applications.  Entra ID is configured to only return tokens to the current localhost:theport URI(s), at endpoint /signin-oidc (the default).
 			
 We suggest using MS's OIDC middleware (Microsoft.AspNetCore.Authentication.OpenIdConnect) to integrate with the IDP, but if you're free to choose.  If you really want to make us unhappy, you can even use the Microsoft Authentication Library (MSAL).
 
