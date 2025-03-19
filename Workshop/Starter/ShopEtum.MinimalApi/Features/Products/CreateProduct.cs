@@ -14,7 +14,6 @@ public class CreateProduct : ISlice
                 CancellationToken cancellationToken) =>
         {
             // note: demo code!  IRL, include a validation step! 
-
             var product = new Product(productDto.Name, 
                 productDto.Description, 
                 productDto.Price, 
@@ -40,6 +39,4 @@ public class CreateProduct : ISlice
         public string? Description { get; set; } 
         public decimal Price { get; set; } 
     }
-
-
 }
