@@ -22,7 +22,6 @@ No security has been implemented anywhere.
 	- Client secret: PtY8Q~j1vApzSU5yw1NfN9DMCTYyxGJTNZDJ~dms
 	- Scope for API access: api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.fullaccess (inetumworkshop-api)
 	- More granular scopes: api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.read api://f694f85a-0c1a-4da0-a0fb-83618e0615a6/shopetum.write
-	- Scope for downstream API access: TODO (inetumworkshop-downstreamapi)
 	
 DO NOT change the port number of the starter applications.  Entra ID is configured to only return tokens to the current localhost:theport URI(s), at endpoint /signin-oidc (the default).
 			
