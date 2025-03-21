@@ -46,4 +46,5 @@ TIP: if you don't add a valid API/resource scope, you will still get an access t
 	- Client id: f694f85a-0c1a-4da0-a0fb-83618e0615a6
 	- Client secret: aY88Q~pY3dEeUE_2GgsYJ~lOMiLVNcuTqIBhiaSt
 	- Scope: api://b532b0b8-7272-4e6c-b3cf-3e76985902ae/pricingapi.fullaccess
+- Add a secured Swagger UI to an API of choice
 - Make a theoretical analysis: think about how you can implement vertical and horizontal access control (google it if you don't know what that is ;-)).  
