@@ -11,7 +11,8 @@ The products are exposed via a remote API: ShopEtum.MinimalApi, endpoint /produc
 No security has been implemented anywhere.  
 
 - Integrate with an identity provider, using the code flow + PKCE.  You can use the login button to log in, or make the full controller only accessible when authorized.  Make sure you use the best practice for JavaScript-based applications: a BFF.  If you're not used to working with JavaScript and/or you think you're more likely to use another technology (regular MVC, Blazor, ...), feel free to use that as a client. We haven't provided it, but start -> new project is just a few clicks away.  We're here to help. 
-	
+
+	
 	We've set up Entra ID as such:
 	- User: inetumworkshop@kevindockxgmail.onmicrosoft.com
 	- Password: ask Kevin :)
@@ -40,8 +41,9 @@ TIP: if you don't add a valid API/resource scope, you will still get an access t
 - Implement the get products functionality. This must securely call the ShopEtum API, endpoint GET /products.  Think about the BFF pattern in this approach: the JavaScript client must never directly call the API.  While doing that, figure out a way to pass through access tokens, and to refresh them if needed.  You're free to use any approach you want, from extending HttpClient, potentially writing your own HttpMessageHandler, using a helper package like Duende's access token management package, combine (or don't combine) that with Yarp, or even use the full-blown Duende.BFF package. 
 
 ### Additional things to do: 
+- Improve your security by storing the secrets in Azure KeyVault.  The KeyVault is named "sectrack-kv-dev-we", the Inetum Demo Workshop User has permission to read secrets from it, and the client secret is stored with key "InetumDemoClientSecret".
+- Play around with authorization policies.  For example, create one in which you only allow access to products for users who live in a certain country. 
 - We've provided a downstream API that will return a fake "ReallyTrulyMostUpToDateProductPrice". Secure this one as well, and call this one from the ShopEtum API.  Two approaches can be taken: 
 	- Imagine that the downstream API doesn't need to know who you are (you = the initial user): use the client credentials flow.  You can use these settings: 
 	- Challenge yourself, take the fancy appraoch, and imagine that the downstream API needs to know who you are: for this, you can use an "on behalf of"  (as it is called in Entra ID) or "token exchange" (as the original flow that one is based on is called) flow.  Note that this is only supported in Entra ID, not in Azure AD B2C.  You can use these settings:
-- Play around with authorization policies.  For example, create one in which you only allow access to products for users who live in a certain country. 
 - Make a theoretical analysis: think about how you can implement vertical and horizontal access control (google it if you don't know what that is ;-)).  

@@ -21,15 +21,6 @@ app.MapStaticAssets();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
-app.MapGet("/localapi/currentuserclaims", (HttpContext httpContext) =>
-{
-    return Results.Ok(new
-    {
-        Message = "Hello from the minimal local API!  It seems you are:",
-        Claims = httpContext.User.Claims.Select(c => new { c.Type, c.Value })
-    });
-});
+    .WithStaticAssets(); 
 
 app.Run();

@@ -5,20 +5,13 @@
 <div class="text-center">
     <h1 class="display-4">Hi there!</h1>
     <p>I'm nothing yet, but I'm trying to become a shop and overcome my existential crisis.</p>
-
-    @if (User.Identity?.IsAuthenticated ?? false)
-    {
-        <p>Welcome, @User.Identity.Name!</p>
+ 
 
         <div class="d-flex flex-wrap justify-content-center gap-2">
             <button id="btnLocalUserClaims" class="btn btn-primary mb-2">Get user claims (local)</button>
             <button id="btnRemoteProducts" class="btn btn-primary mb-2">Get products (remote)</button>
         </div>
-    }
-    else
-    {
-        <p>It seems like I don't know who you are.  Log in to continue.</p>
-    }
+ 
 
     <div id="apiResult" class="mt-3">
         <!-- API call results will be displayed here -->
