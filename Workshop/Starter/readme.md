@@ -43,7 +43,8 @@ TIP: if you don't add a valid API/resource scope, you will still get an access t
 ### Additional things to do: 
 - Improve your security by storing the secrets in Azure KeyVault.  The KeyVault is named "sectrack-kv-dev-we", the Inetum Demo Workshop User has permission to read secrets from it, and the client secret is stored with key "InetumDemoClientSecret".
 - Play around with authorization policies.  For example, create one in which you only allow access to products for users who live in a certain country. 
-- We've provided a downstream API that will return a fake "ReallyTrulyMostUpToDateProductPrice". Secure this one as well, and call this one from the ShopEtum API.  Two approaches can be taken: 
-	- Imagine that the downstream API doesn't need to know who you are (you = the initial user): use the client credentials flow.  You can use these settings: 
-	- Challenge yourself, take the fancy appraoch, and imagine that the downstream API needs to know who you are: for this, you can use an "on behalf of"  (as it is called in Entra ID) or "token exchange" (as the original flow that one is based on is called) flow.  Note that this is only supported in Entra ID, not in Azure AD B2C.  You can use these settings:
+- We've provided a downstream API that will return a fake "ReallyTrulyMostUpToDateProductPrice". Secure this one as well, and call this one from the ShopEtum API.  Use the client credentials flow to get an access token for this API.  
+	- Client id: f694f85a-0c1a-4da0-a0fb-83618e0615a6
+	- Client secret: aY88Q~pY3dEeUE_2GgsYJ~lOMiLVNcuTqIBhiaSt
+	- Scope: api://b532b0b8-7272-4e6c-b3cf-3e76985902ae/pricingapi.fullaccess
 - Make a theoretical analysis: think about how you can implement vertical and horizontal access control (google it if you don't know what that is ;-)).  
