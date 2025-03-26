@@ -1,6 +1,8 @@
 # Getting started
 - Run update-database on the ShopEtum.MinimalApi project to create the API's database on your local DB instance.  
 - To view tokens, jwt.io is your friend.
+  
+Note: if the migrations don't work, you're likely using a different EF Core version than the one that was used to create them.  In that case, delete the migrations folder and execute 'add-migration InitialMigration' to recreate them with your version.  After that, you can continue with creating the database (execute the update-database command).
 
 # Workshop description
 
